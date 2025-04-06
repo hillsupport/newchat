@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Access Assistant</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body class="bg-gray-100 text-gray-900">
+    <div class="max-w-md mx-auto mt-10 p-4 bg-white rounded-xl shadow-lg">
+      <h1 class="text-xl font-semibold mb-4">Access Assistant</h1>
+      <p class="text-sm text-gray-600 mb-4">“Let’s walk through this together, step by step.”</p>
+
+      <!-- Assistant Message Example -->
+      <div class="mb-4">
+        <div class="bg-blue-100 text-blue-900 p-3 rounded-lg text-sm mb-2">
+          Hello. I’m the Access Assistant. Would you like help by audio or in written steps?
+        </div>
+
+        <!-- Suggested Prompts -->
+        <div class="flex flex-wrap gap-2">
+          <button class="bg-gray-200 text-sm px-3 py-1 rounded-full hover:bg-gray-300">
+            I need help with Social Security
+          </button>
+          <button class="bg-gray-200 text-sm px-3 py-1 rounded-full hover:bg-gray-300">
+            My tax refund is delayed
+          </button>
+          <button class="bg-gray-200 text-sm px-3 py-1 rounded-full hover:bg-gray-300">
+            Where do I send the Privacy Release Form?
+          </button>
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="flex gap-2 mt-4">
+        <input
+          id="userInput"
+          type="text"
+          placeholder="Type your concern here..."
+          class="w-full border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none"
+          aria-label="Enter your request for help"
+        />
+        <button
+          onclick="sendMessage()"
+          class="bg-blue-600 text-white rounded-full px-4 py-2 text-sm"
+        >
+          Send
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function sendMessage() {
+        const input = document.getElementById('userInput');
+        const message = input.value.trim();
+        if (!message) return;
+
+        alert('Message sent: ' + message); // Placeholder until we wire GPT
+        input.value = '';
+      }
+    </script>
+  </body>
+</html>
