@@ -4,45 +4,91 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Access Assistant</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet" />
   </head>
   <body class="bg-gray-100 text-gray-900">
-    <div class="max-w-md mx-auto mt-10 p-4 bg-white rounded-xl shadow-lg">
-      <h1 class="text-xl font-semibold mb-4">Access Assistant</h1>
-      <p class="text-sm text-gray-600 mb-4">“Let’s walk through this together, step by step.”</p>
 
-      <!-- Message Log -->
-      <div class="chat-log mb-4 space-y-2"></div>
+    <!-- Prompt Messages Container -->
+    <div class="flex h-[97vh] w-full flex-col">
+      <!-- Prompt Messages -->
+      <div class="flex-1 overflow-y-auto rounded-xl bg-slate-200 p-4 text-sm leading-6 text-slate-900 dark:bg-slate-800 dark:text-slate-300 sm:text-base sm:leading-7">
+        <div class="flex flex-row px-2 py-4 sm:px-4">
+          <img class="mr-2 flex h-8 w-8 rounded-full sm:mr-4" src="https://dummyimage.com/256x256/363536/ffffff&text=U" />
+          <div class="flex max-w-3xl items-center">
+            <p>Explain quantum computing in simple terms</p>
+          </div>
+        </div>
 
-      <!-- Suggested Prompts -->
-      <div class="flex flex-wrap gap-2 mb-4">
-        <button class="prompt-suggestion bg-gray-200 text-sm px-3 py-1 rounded-full hover:bg-gray-300">
-          I need help with Social Security
-        </button>
-        <button class="prompt-suggestion bg-gray-200 text-sm px-3 py-1 rounded-full hover:bg-gray-300">
-          My tax refund is delayed
-        </button>
-        <button class="prompt-suggestion bg-gray-200 text-sm px-3 py-1 rounded-full hover:bg-gray-300">
-          Where do I send the Privacy Release Form?
-        </button>
+        <div class="mb-2 flex w-full flex-row justify-end gap-x-2 text-slate-500">
+          <button class="hover:text-blue-600">👍</button>
+          <button class="hover:text-blue-600">👎</button>
+          <button class="hover:text-blue-600">🔄</button>
+        </div>
+
+        <div class="mb-4 flex rounded-xl bg-slate-50 px-2 py-6 dark:bg-slate-900 sm:px-4">
+          <img class="mr-2 flex h-8 w-8 rounded-full sm:mr-4" src="https://dummyimage.com/256x256/354ea1/ffffff&text=G" />
+          <div class="flex max-w-3xl items-center rounded-xl">
+            <p>Quantum computers use qubits. Unlike classical bits, qubits can represent 0 and 1 simultaneously...</p>
+          </div>
+        </div>
+
+        <div class="flex px-2 py-4 sm:px-4">
+          <img class="mr-2 flex h-8 w-8 rounded-full sm:mr-4" src="https://dummyimage.com/256x256/363536/ffffff&text=U" />
+          <div class="flex max-w-3xl items-center">
+            <p>What are three great applications of quantum computing?</p>
+          </div>
+        </div>
+
+        <div class="mb-4 flex rounded-xl bg-slate-50 px-2 py-6 dark:bg-slate-900 sm:px-4">
+          <img class="mr-2 flex h-8 w-8 rounded-full sm:mr-4" src="https://dummyimage.com/256x256/354ea1/ffffff&text=G" />
+          <div class="flex max-w-3xl items-center rounded-xl">
+            <p>Three great applications of quantum computing are: Optimization of complex problems, Drug Discovery, and Cryptography.</p>
+          </div>
+        </div>
       </div>
 
-      <!-- Input Area -->
-      <div class="flex gap-2">
-        <input
-          id="userInput"
-          type="text"
-          placeholder="Type your concern here..."
-          class="w-full border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none"
-          aria-label="Enter your request for help"
-        />
-        <button
-          id="sendBtn"
-          class="bg-blue-600 text-white rounded-full px-4 py-2 text-sm"
-        >
-          Send
-        </button>
+      <!-- Prompt Suggestions -->
+      <div class="mt-4 flex w-full gap-x-2 overflow-x-auto whitespace-nowrap text-xs text-slate-600 dark:text-slate-300 sm:text-sm">
+        <button class="rounded-lg bg-slate-200 p-2 hover:bg-blue-600 hover:text-white">Regenerate response</button>
+        <button class="rounded-lg bg-slate-200 p-2 hover:bg-blue-600 hover:text-white">Use prompt suggestions</button>
+        <button class="rounded-lg bg-slate-200 p-2 hover:bg-blue-600 hover:text-white">Toggle web search</button>
+        <button class="rounded-lg bg-slate-200 p-2 hover:bg-blue-600 hover:text-white">Select a tone</button>
+        <button class="rounded-lg bg-slate-200 p-2 hover:bg-blue-600 hover:text-white">Improve</button>
+        <button class="rounded-lg bg-slate-200 p-2 hover:bg-blue-600 hover:text-white">Make longer</button>
+        <button class="rounded-lg bg-slate-200 p-2 hover:bg-blue-600 hover:text-white">Explain in simple words</button>
+        <button class="rounded-lg bg-slate-200 p-2 hover:bg-blue-600 hover:text-white">Summarize in three lines</button>
+        <button class="rounded-lg bg-slate-200 p-2 hover:bg-blue-600 hover:text-white">Translate content</button>
       </div>
+
+      <!-- Prompt Input -->
+      <form class="mt-2">
+        <label for="chat-input" class="sr-only">Enter your prompt</label>
+        <div class="relative">
+          <button type="button" class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-500 hover:text-blue-600">
+            <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M9 2m0 3a3 3 0 0 1 3 -3h0a3 3 0 0 1 3 3v5a3 3 0 0 1 -3 3h0a3 3 0 0 1 -3 -3z"></path>
+              <path d="M5 10a7 7 0 0 0 14 0"></path>
+              <path d="M8 21l8 0"></path>
+              <path d="M12 17l0 4"></path>
+            </svg>
+            <span class="sr-only">Use voice input</span>
+          </button>
+          <textarea
+            id="chat-input"
+            class="block w-full resize-none rounded-xl border-none bg-slate-200 p-4 pl-10 pr-20 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 sm:text-base"
+            placeholder="Enter your prompt"
+            rows="1"
+            required
+          ></textarea>
+          <button
+            type="submit"
+            class="absolute bottom-2 right-2.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:text-base"
+          >
+            Send <span class="sr-only">Send message</span>
+          </button>
+        </div>
+      </form>
     </div>
 
     <script src="main.js"></script>
